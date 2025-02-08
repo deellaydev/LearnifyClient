@@ -1,0 +1,51 @@
+.wrapper {
+    padding: 12px 24px;
+}
+
+.title {
+    font-size: 38px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.subTitle {
+    font-size: 24px;
+    text-align: center;
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+.text {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #92a5ef
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 48px;
+
+    & > button {
+        width: 220px;
+        font-size: 24px;
+        height: 56px;
+    }
+}
+
+.popularCourses {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.popularCoursesWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 48px;
+}
+

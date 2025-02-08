@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.studentWrapper {
+    width: 10%;
+    height: calc(100dvh - 64px);
+    display: flex;
+    justify-content: center;
+    padding: 12px 24px;
+    transition: all .5s ease-in-out;
+
+    & > button {
+        width: 160px;
+        font-size: 16px;
+        height: 48px;
+    }
+}
+
+.teacherWrapper {
+    width: 10%;
+    height: calc(100dvh - 64px);
+    display: flex;
+    justify-content: center;
+    padding: 12px 24px;
+    transition: all .5s ease-in-out;
+
+    & > button {
+        width: 160px;
+        font-size: 16px;
+        height: 48px;
+    }
+}
+
+.activeVertical {
+    transition: all .5s ease-in-out;
+    width: 90% !important;
+    background: #2b2d31;
+}
+
+.fromWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    & > input {
+        width: 350px;
+    }
+}
+

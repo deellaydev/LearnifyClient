@@ -1,0 +1,63 @@
+.courseWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.courseSidebar {
+    background: #2b2d31;
+    min-width: 512px;
+    padding: 12px 24px;
+    height: calc(100dvh - 64px);
+}
+
+.sidebarName {
+    font-size: 24px;
+    color: #92a5ef
+}
+
+.sidebarItem {
+    padding: 8px;
+    background-color: #1e1f2240;
+    margin-bottom: 16px;
+    border-radius: 16px;
+}
+
+.sidebarItemSuccess {
+    background-color: #24804510;
+}
+
+.sidebarItemInProgress {
+    background-color: #92a5ef10;
+}
+
+.sidebarStep {
+    font-size: 20px;
+    margin-bottom: 8px;
+    margin-top: 24px;
+}
+
+.sidebarChildren {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 16px;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.16);;
+    }
+}
+
+.courseContent {
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.courseContentFooter {
+    margin: auto 0 0 auto;
+}

@@ -1,0 +1,4 @@
+@font-face {
+    font-family: 'RubikRegular'; /* Name your font family */
+    src: url('./Rubik-Regular.ttf'); /* Locate the .ttf file within your directory*/
+}

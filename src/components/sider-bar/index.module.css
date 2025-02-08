@@ -1,0 +1,102 @@
+.sidebarHeader {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #dffdff50;
+
+    & > div {
+        display: flex;
+        padding: 4px;
+        height: 56px;
+        width: 56px;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            & > span {
+                background-color: #23a55a;
+            }
+        }
+
+
+        & > span {
+            background-color: #313338;
+            min-height: 48px;
+            min-width: 48px;
+        }
+    }
+}
+
+.circle {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    position: relative;
+
+    & > p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 38px;
+        margin-top: -4px;
+        text-align: center;
+    }
+}
+
+.sidebarContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px;
+    height: calc(100dvh - 64px - 80px);
+    overflow-y: scroll;
+    overflow-scrolling: touch;
+    overflow-x: hidden;
+
+    & > div {
+        display: flex;
+        padding: 4px;
+        height: 56px;
+        width: 56px;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            & > span {
+                background-color: #23a55a;
+            }
+        }
+
+        & > span {
+            background-color: #313338;
+            min-height: 48px;
+            min-width: 48px;
+        }
+    }
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+    }
+}
+
+.sidebarContentOpened {
+    & > div {
+        width: 100%;
+    }
+}
+
+.sidebarFooter {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    border-top: 1px solid #dffdff50;
+}
