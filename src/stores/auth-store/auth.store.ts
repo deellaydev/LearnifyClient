@@ -18,7 +18,20 @@ export class AuthStore {
     }
 
     setUser(user: UserType | null): void {
-        this.user = user;
+        if (user && ('workExperience' in user) && user.workExperience && typeof user.workExperience === 'string') {
+            this.user = {
+                ...user,
+                workExperience: user.workExperience.split(';').map((el) => {
+                    const [w, e] = el.split('/');
+                    return {
+                        workPlace: w,
+                        experience: e
+                    }
+                })
+            }
+        } else {
+            this.user = user;
+        }
     }
 }
 

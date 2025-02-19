@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, Form, Input, Button, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
+import {baseRequest} from "../../services/api-service.ts";
+import {authStore} from "../../stores/auth-store/auth.store.ts";
 
 export interface StepContent {
     description: string;
@@ -39,12 +41,19 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({ visible, onCancel
 
     const handleOk = async () => {
         try {
-            // Валидируем поля формы
+
             const values = await form.validateFields();
-            // Приводим дату к нужному формату
+
             values.endDate = moment(values.endDate, 'DD-MM-YYYY').format('DD-MM-YYYY');
-            onCreate(values);
-            form.resetFields();
+            console.log(values);
+            baseRequest.post('courses/add-course', {
+                ...values,
+                author: authStore.user?.nickname,
+                rating: 5
+            }).then((res) => {
+                form.resetFields();
+                onCancel()
+            })
         } catch (error) {
             console.error('Ошибка валидации формы:', error);
         }
@@ -70,13 +79,6 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({ visible, onCancel
                     <Input placeholder="Название курса" />
                 </Form.Item>
                 <Form.Item
-                    name="author"
-                    label="Автор"
-                    rules={[{ required: true, message: 'Введите автора курса' }]}
-                >
-                    <Input placeholder="Автор курса" />
-                </Form.Item>
-                <Form.Item
                     name="category"
                     label="Категория"
                     rules={[{ required: true, message: 'Введите категорию курса' }]}
@@ -90,15 +92,7 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({ visible, onCancel
                 >
                     <DatePicker format="DD-MM-YYYY" style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item
-                    name="rating"
-                    label="Рейтинг"
-                    rules={[{ required: true, message: 'Введите рейтинг курса' }]}
-                >
-                    <InputNumber min={0} max={5} step={0.1} style={{ width: '100%' }} />
-                </Form.Item>
 
-                {/* Динамическое добавление шагов курса */}
                 <Form.List name="steps">
                     {(fields, { add, remove }) => (
                         <>
@@ -165,15 +159,6 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({ visible, onCancel
                                                             fieldKey={[childField.fieldKey, 'content', '__html']}
                                                         >
                                                             <Input.TextArea placeholder="HTML контент (опционально)" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            {...childField}
-                                                            label="Статус"
-                                                            name={[childField.name, 'status']}
-                                                            fieldKey={[childField.fieldKey, 'status']}
-                                                            rules={[{ required: true, message: 'Введите статус' }]}
-                                                        >
-                                                            <Input placeholder="Статус" />
                                                         </Form.Item>
                                                         <Button type="link" onClick={() => removeChild(childField.name)}>
                                                             Удалить элемент

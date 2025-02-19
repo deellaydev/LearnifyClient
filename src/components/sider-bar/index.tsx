@@ -22,6 +22,10 @@ export const SideBar = observer(() => {
     }
 
     const handleAddNewCourse = () => {
+        if (!isUserAuth) {
+            setIsOpen(true);
+            return;
+        }
         //@ts-ignore
         if (isUserAuth && !authStore.user.workExperience) {
             navigate("/courses");
@@ -45,7 +49,7 @@ export const SideBar = observer(() => {
     return (
         <>
             <div className={classNames(styles.sidebarHeader, {[styles.sidebarContentOpened]: isOpened})}>
-                {isUserAuth ? <div><Avatar>{authStore.user?.nickname}</Avatar></div> :
+                {isUserAuth ? <div onClick={() => navigate('/cabinet')}><Avatar>{authStore.user?.nickname}</Avatar></div> :
                     <Button type={'text'} onClick={() => setIsOpen(true)}><LoginOutlined/>{isOpened ? 'Войти' : null}
                     </Button>}
             </div>

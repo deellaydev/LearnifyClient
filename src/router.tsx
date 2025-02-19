@@ -4,6 +4,7 @@ import {MainPage} from "./pages/main";
 import {CoursesList} from "./pages/courses-list";
 import {CoursePage} from "./pages/course";
 import {SignIn} from "./pages/sign-in";
+import {Cabinet} from "./pages/cabinet";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
             {path: 'courses', element: <CoursesList/>},
             {path: 'course/:id', element: <CoursePage/>},
             {path: 'sign-in', element: <SignIn />},
+            {path: 'cabinet', element: <Cabinet/>}
         ],
     }
 ])

@@ -19,14 +19,17 @@ export const CoursePage = observer(() => {
 
     useLayoutEffect(() => {
         courseStore.fetchCourseById();
-        courseStore.fetchUserProgress();
+        // courseStore.fetchUserProgress();
     }, []);
 
     useEffect(() => {
         courseStore.setCourseId(params.id)
         courseStore.fetchCourseById();
-        courseStore.fetchUserProgress();
+        setlessonPassed(false);
+        setCurrentStep([0,0])
+        // courseStore.fetchUserProgress();
     }, [params, authStore.user]);
+
 
     // useEffect(() => {
     //     if (courseStore.userProgress?.progress) {
