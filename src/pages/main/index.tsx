@@ -2,7 +2,7 @@ import styles from './index.module.css'
 import {Button} from "antd";
 import {CourseItem} from "../../components/course-item";
 import {additionalCourseItems, popularCourseItems} from "./courses.mock.ts";
-import {sharedState, SignInVertical} from "../../stores/shared-store/shared.state.ts";
+import {SignInVertical} from "../../stores/shared-store/shared.state.ts";
 import {sharedController} from "../../stores/shared-store/shared.controller.ts";
 import {useNavigate} from "react-router-dom";
 import {RegistrationModal} from "../../components/registration-modal";
@@ -12,7 +12,7 @@ import {observer} from "mobx-react-lite";
 
 export const MainPage = observer(() => {
     const navigate = useNavigate();
-    const [isStudent, setIsStudent] = useState(false);
+    const [, setIsStudent] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     const handleChangeVertical = (vertical: SignInVertical) => {

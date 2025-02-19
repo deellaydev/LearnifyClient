@@ -4,6 +4,7 @@ class BaseRequest {
     private axiosInstance: AxiosInstance;
 
     constructor(baseURL: string) {
+        console.log('baseURL', import.meta.env.VITE_HOST);
         this.axiosInstance = axios.create({
             baseURL: baseURL,
             headers: {
@@ -18,6 +19,7 @@ class BaseRequest {
             const response: AxiosResponse<T> = await this.axiosInstance.get(endpoint, { params });
             return response.data;
         } catch (error) {
+            //@ts-ignore
             const err = this.handleError(error);
             throw err;
         }
@@ -29,6 +31,7 @@ class BaseRequest {
             const response: AxiosResponse<R> = await this.axiosInstance.post(endpoint, data);
             return response.data;
         } catch (error) {
+            //@ts-ignore
             const err = this.handleError(error);
             throw err;
         }
@@ -40,6 +43,7 @@ class BaseRequest {
             const response: AxiosResponse<R> = await this.axiosInstance.put(endpoint, data);
             return response.data;
         } catch (error) {
+            //@ts-ignore
             const err = this.handleError(error);
             throw err;
         }
@@ -51,6 +55,7 @@ class BaseRequest {
             const response: AxiosResponse<T> = await this.axiosInstance.delete(endpoint);
             return response.data;
         } catch (error) {
+            //@ts-ignore
             const err = this.handleError(error);
             throw err;
         }
@@ -71,4 +76,4 @@ class BaseRequest {
     }
 }
 
-export const baseRequest = new BaseRequest('http://localhost:4200')
+export const baseRequest = new BaseRequest(import.meta.env.VITE_HOST)

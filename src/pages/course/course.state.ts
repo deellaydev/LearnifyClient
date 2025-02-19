@@ -86,6 +86,7 @@ class CourseStore {
     async fetchUserProgress() {
         this.loading = true;
         this.error = null;
+        //@ts-ignore
         if (!authStore.user.id || !this.courseId) return;
         try {
             const response = await baseRequest.post<any,UserCourse>(

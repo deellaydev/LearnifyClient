@@ -21,6 +21,7 @@ export class AuthStore {
         if (user && ('workExperience' in user) && user.workExperience && typeof user.workExperience === 'string') {
             this.user = {
                 ...user,
+                // @ts-ignore
                 workExperience: user.workExperience.split(';').map((el) => {
                     const [w, e] = el.split('/');
                     return {

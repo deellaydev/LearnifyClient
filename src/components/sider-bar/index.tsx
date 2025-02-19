@@ -8,7 +8,7 @@ import classNames from "classnames";
 import {useNavigate} from "react-router-dom";
 import {AuthModal} from "../auth-modal";
 import {useState} from "react";
-import {authStore, AuthStore} from "../../stores/auth-store/auth.store.ts";
+import {authStore} from "../../stores/auth-store/auth.store.ts";
 import {coursesStore} from "../../pages/courses-list/courses.store.ts";
 import {courseStore} from "../../pages/course/course.state.ts";
 import CreateCourseModal from "./create.modal.tsx";

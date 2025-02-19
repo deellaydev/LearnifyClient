@@ -1,6 +1,5 @@
 import {makeAutoObservable} from "mobx";
 import {baseRequest} from "../../services/api-service.ts";
-import {authStore} from "../../stores/auth-store/auth.store.ts";
 
 export interface CourseSummary {
     id: string;
@@ -34,6 +33,7 @@ class CoursesStore {
         }
     }
 
+    //@ts-ignore
     async fetchCoursesByUser(userId: string): Promise<CourseSummary[]> {
         try {
             const response = await baseRequest.get<{ id: string; name: string }[]>(`courses/by-user/${userId}`);

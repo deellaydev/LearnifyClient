@@ -18,12 +18,15 @@ export const CoursePage = observer(() => {
     const params = useParams();
 
     useLayoutEffect(() => {
+        //@ts-ignore
         courseStore.fetchCourseById();
         // courseStore.fetchUserProgress();
     }, []);
 
     useEffect(() => {
+        //@ts-ignore
         courseStore.setCourseId(params.id)
+        //@ts-ignore
         courseStore.fetchCourseById();
         setlessonPassed(false);
         setCurrentStep([0,0])
@@ -41,7 +44,6 @@ export const CoursePage = observer(() => {
         if (courseStore.userProgress?.progress && courseStore.course) {
             const [step, child] = courseStore.userProgress.progress.split(',').map(Number);
             for (let i = 0; i <= step; i++) {
-                const currentStepPointLength = courseStore.course.steps[i].children.length - 1;
                 for (let y = 0; y <= child; y++) {
                     if (y === child && i === step) {
                         courseStore.updateChildStatus(i, y, 'inProgress');

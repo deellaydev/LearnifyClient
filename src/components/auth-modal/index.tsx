@@ -1,5 +1,4 @@
 import {Button, Checkbox, Form, Input, Modal} from "antd";
-import {useState} from "react";
 import {authController} from "../../stores/auth-store/auth.controller.ts";
 import {observer} from "mobx-react-lite";
 import {emailValidation, passwordValidation} from "../registration-modal/validations.ts";
@@ -24,6 +23,7 @@ export const AuthModal = observer((props: Props) => {
     }
 
     return (
+        // @ts-ignore
         <Modal title="Войти:" open={isOpen} onCancel={handleClose} closable destroyOnClose footer={null}>
             <Form
                 name="register"

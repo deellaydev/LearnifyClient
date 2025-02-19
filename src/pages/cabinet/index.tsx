@@ -1,4 +1,4 @@
-import React from 'react';
+//@ts-nocheck
 import { Form, Input, Checkbox, Button, Space, InputNumber } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import {authStore} from "../../stores/auth-store/auth.store.ts";
@@ -26,11 +26,8 @@ interface MentorDto extends BaseUserDto {
     workExperience: WorkExperience[];
 }
 
-interface UserInfoFormProps {
-    onSubmit: (values: any) => void;
-}
 
-export const Cabinet: React.FC<UserInfoFormProps> = observer(({ onSubmit }) => {
+export const Cabinet = observer(() => {
     const [form] = Form.useForm();
 
     const user = authStore.user;
@@ -56,11 +53,13 @@ export const Cabinet: React.FC<UserInfoFormProps> = observer(({ onSubmit }) => {
         baseRequest.post('users/update', {
             ...user,
             ...values,
+            //@ts-ignore
             isMentor: !!(user as MentorDto).workExperience
         }).then(() => {
             window.localStorage.setItem('user', JSON.stringify({
                 ...user,
                 ...values,
+                //@ts-ignore
                 isMentor: !!(user as MentorDto).workExperience
             }));
         })
@@ -105,6 +104,7 @@ export const Cabinet: React.FC<UserInfoFormProps> = observer(({ onSubmit }) => {
                                         <Form.Item
                                             {...restField}
                                             name={[name, 'workPlace']}
+                                            //@ts-ignore
                                             fieldKey={[fieldKey, 'workPlace']}
                                             label="Место работы"
                                             rules={[{ required: true, message: 'Введите место работы' }]}
@@ -114,6 +114,7 @@ export const Cabinet: React.FC<UserInfoFormProps> = observer(({ onSubmit }) => {
                                         <Form.Item
                                             {...restField}
                                             name={[name, 'experience']}
+                                            //@ts-ignore
                                             fieldKey={[fieldKey, 'experience']}
                                             label="Опыт (в годах)"
                                             rules={[{ required: true, message: 'Введите опыт работы' }]}

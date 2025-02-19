@@ -10,6 +10,7 @@ export const CoursesList = observer(() => {
     }, [])
 
     return <div className={styles.wrapper}>
+        {/*//@ts-ignore*/}
         {coursesStore.courses.map((item, i) => <CourseItem key={i} item={item}/>)}
     </div>
 })

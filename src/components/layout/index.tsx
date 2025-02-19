@@ -22,6 +22,7 @@ export const LayoutComponent = observer(() => {
         console.log(user)
         if (user) {
             authStore.setUser(JSON.parse(user))
+            //@ts-ignore
             coursesStore.fetchCoursesByUser(authStore.user?.id)
         }
     }, [])

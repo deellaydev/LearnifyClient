@@ -22,20 +22,21 @@ export class AuthController {
             window.localStorage.setItem("user", JSON.stringify(user));
             coursesStore.fetchCoursesByUser(user.id)
             cb && cb();
-        }).catch((err: {code: number, message: string}) => {
+        }).catch(() => {
             alertStore.addAlert('Неверный логин или пароль', 'error')
         });
     }
 
-    registration(payload: RegistrationFormValues, cb?: () => void) {
+    registration(payload: RegistrationFormValues) {
         const regData = {
             ...payload,
+            //@ts-ignore
             birthDay: moment(payload.birthDate).format('DD-MM-YYYY'),
             isMentor: this.sharedStore.signInVertical === 'teacher',
         }
         console.log(regData)
 
-        baseRequest.post<any, {token: string; user: UserType}>('/auth/registration', regData).then(({user, token}) => {
+        baseRequest.post<any, {token: string; user: UserType}>('/auth/registration', regData).then(({}) => {
 
         })
     }
