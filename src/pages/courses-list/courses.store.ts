@@ -24,7 +24,7 @@ class CoursesStore {
         this.loading = true;
         this.error = null;
         try {
-            const response = await baseRequest.get<CourseSummary[]>('http://localhost:4200/courses/summary');
+            const response = await baseRequest.get<CourseSummary[]>(`${import.meta.env.VITE_HOST}/courses/summary`);
             this.courses = response;
         } catch (err: any) {
             this.error = err.message || 'Ошибка при загрузке курсов';
